@@ -4,10 +4,13 @@ import Board from "../components/board";
 import styles from "../styles/Home.module.css";
 import ResultArea from "../components/resultArea";
 
+import ReactDatePicker from "react-datepicker";
+
 export default function Home() {
     // Dates variables
-    // Set startDate to the desired starting date
-    const startDate = new Date(2020, 10, 0, 12);
+    // Set startDate to a year ago and endDate to today
+    const [ startDate, setStartDate] = useState(new Date(new Date().setFullYear(new Date().getFullYear() - 1)));
+    const [ endDate, setEndDate] = useState(new Date());
 
     const [selectedDates, setSelectedDates] = useState([]);
 
@@ -42,10 +45,15 @@ export default function Home() {
                 <title>Git commiter gui</title>
                 <meta name="Git commiter gui" content="Git commiter gui" />
                 <link rel="icon" href="/favicon.ico" />
+
             </Head>
 
             <main className={styles.main}>
                 <h1 className={styles.title}>Git commiter gui</h1>
+
+                <ReactDatePicker style={{"z-index": "3"}} selected={startDate} onChange={(date) => setStartDate(date)} />
+                <ReactDatePicker className={styles.reactDatePicker} selected={endDate} onChange={(date) => setEndDate(date)} />
+
                 <Board
                     startDate={startDate}
                     addDate={addSelectedDate}
