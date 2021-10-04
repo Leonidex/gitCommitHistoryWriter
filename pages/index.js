@@ -51,8 +51,8 @@ export default function Home() {
             <main className={styles.main}>
                 <h1 className={styles.title}>Git commiter gui</h1>
 
-                <ReactDatePicker style={{"z-index": "3"}} selected={startDate} onChange={(date) => setStartDate(date)} />
-                <ReactDatePicker className={styles.reactDatePicker} selected={endDate} onChange={(date) => setEndDate(date)} />
+                <ReactDatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                <ReactDatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
 
                 <Board
                     startDate={startDate}
