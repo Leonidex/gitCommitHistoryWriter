@@ -1,0 +1,138 @@
+.container {
+    min-height: 100vh;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.main {
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.title {
+    margin: 0;
+    line-height: 1.15;
+    font-size: 4rem;
+}
+
+.board {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.daydiv {
+    position: relative;
+    min-height: min(4vh, 2vw);
+    min-width: min(4vh, 2vw);
+    height: min(4vh, 2vw);
+    width: min(4vh, 2vw);
+    padding: 0.1rem 0.1rem;
+    border: 1px solid #BA8C63;
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.daydiv_unmarked:hover {
+    background-color: #eaeaea;
+    border: 1px solid #a34c00;
+}
+
+.daydiv_marked:hover {
+    background-color: #bb0e0e;
+    border: 1px solid #a34c00;
+}
+
+.daydiv_marked {
+    background-color: #882626;
+}
+
+/* .hoverDayDiv {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+} */
+
+.result_textarea {
+    width: 100%;
+    height: 30vh;
+    cursor: copy;
+}
+
+.tooltip {
+    width: 80%;
+    position: relative;
+    justify-items: center;
+    display: block;
+    z-index: 1;
+}
+
+.tooltip .tooltiptext,
+.tooltip .tooltiptextarea {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    display: block;
+
+    /* Position the tooltip */
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+}
+
+.tooltip .tooltiptext {
+    bottom: 100%;
+    right: 100%;
+}
+
+.tooltip .tooltiptextarea {
+    top: 90%;
+    left: 0;
+    right: 0;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip:hover .tooltiptextarea {
+    visibility: visible;
+}
