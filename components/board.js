@@ -29,7 +29,7 @@ export default function Board({startDate, endDate, addDate, removeDate, leftMous
 
     useEffect(() => {
         setDayDivEdgeLength(Math.floor(windowSize.width/(weeksCount + 2)));
-    }, [windowSize]);
+    }, [windowSize, weeksCount]);
     
     return (
         <div className={styles.board}>

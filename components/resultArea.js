@@ -42,7 +42,7 @@ export default function ResultArea({selectedDates}) {
     
     return (
         <>
-            <button onClick={handleDoneClick}>
+            <button className={styles.button} onClick={handleDoneClick}>
                 Done
             </button>
             <div className={styles.tooltip} onClick={handleTextareaClick}>
