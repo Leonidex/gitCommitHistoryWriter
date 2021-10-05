@@ -62,6 +62,7 @@ export default function Home() {
 
                 <Board
                     startDate={startDate}
+                    endDate={endDate}
                     addDate={addSelectedDate}
                     removeDate={removeSelectedDate}
                     leftMouseIsPressed={leftMouseIsPressed}

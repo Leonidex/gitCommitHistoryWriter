@@ -6,7 +6,9 @@ export default function Column({startDate, addDate, removeDate, leftMouseIsPress
 
     let tempDate = new Date(startDate);
     
-    for (let index = 0; index < 7; index++) {
+    days.push(new Date(tempDate));
+    
+    for (let index = 0; index < 6; index++) {
         tempDate.setDate(tempDate.getDate() + 1)
         days.push(new Date(tempDate));
     }
