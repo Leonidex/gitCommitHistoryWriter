@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import DayDiv from './dayDiv';
 
-export default function Column({startDate, addDate, removeDate, leftMouseIsPressed, dayDivEdgeLength: dayDivEdgeLength}) {
+export default function Column({startDate, addDate, removeDate, leftMouseIsPressed, dayDivEdgeLength}) {
     let days = [];
 
     let tempDate = new Date(startDate);
@@ -10,6 +10,7 @@ export default function Column({startDate, addDate, removeDate, leftMouseIsPress
     
     for (let index = 0; index < 6; index++) {
         tempDate.setDate(tempDate.getDate() + 1)
+        // tempDate.setHours(Math.floor(Math.random()*24), Math.floor(Math.random()*60), Math.floor(Math.random()*60), Math.floor(Math.random()*1000));
         days.push(new Date(tempDate));
     }
 
