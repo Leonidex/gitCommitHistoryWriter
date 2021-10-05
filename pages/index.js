@@ -9,16 +9,12 @@ import ReactDatePicker from "react-datepicker";
 export default function Home() {
     // Dates variables
     // Set startDate to a year ago and endDate to today
-    const [ startDate, setStartDate] = useState(new Date(new Date().setFullYear(new Date().getFullYear() - 1)));
+    let lastYear = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
+    const [ startDate, setStartDate] = useState(new Date(lastYear.setDate(lastYear.getDate() - lastYear.getDay())));
     const [ endDate, setEndDate] = useState(new Date());
 
-    const referenceDate = new Date(2017, 0, 1);
-    const startDateHandler = (date) => {
-        console.log(referenceDate);
-        let diffDays = (date - referenceDate) % 7;
-        console.log(diffDays);
-        let _date = new Date(new Date().setDate(date.getDate() - diffDays));
-        console.log(_date);
+    const handleSetStartDate = (date) => {
+        let _date = new Date(date.setDate(date.getDate() - date.getDay()));
         setStartDate(_date);
     }
 
@@ -61,7 +57,7 @@ export default function Home() {
             <main className={styles.main}>
                 <h1 className={styles.title}>Git commiter gui</h1>
 
-                <ReactDatePicker selected={startDate} onChange={(date) => startDateHandler(date)} dateFormat="yyyy/MM/d"/>
+                <ReactDatePicker selected={startDate} onChange={(date) => handleSetStartDate(date)} dateFormat="yyyy/MM/d"/>
                 <ReactDatePicker selected={endDate} onChange={(date) => setEndDate(date)} dateFormat="yyyy/MM/d"/>
 
                 <Board
