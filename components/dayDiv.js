@@ -21,23 +21,29 @@ export default function DayDiv({date, addDate, removeDate, leftMouseIsPressed, e
 
     const className = styles.daydiv + " " + styles.tooltip + " ";
 
-    const handleMouseDown = () => {
-        if (!isMarked) {
-            addDate(date);
-        } else {
-            removeDate(date);
-        }
-        setIsMarked(!isMarked);
-    }
-
-    const handleMouseEnter = () => {
-        if (leftMouseIsPressed) {
+    const handleMouseDown = (e) => {
+        let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
+        if (keyCode === 1) {
             if (!isMarked) {
                 addDate(date);
             } else {
                 removeDate(date);
             }
             setIsMarked(!isMarked);
+        }
+    }
+
+    const handleMouseEnter = (e) => {
+        let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
+        if (keyCode === 1) {
+            if (leftMouseIsPressed) {
+                if (!isMarked) {
+                    addDate(date);
+                } else {
+                    removeDate(date);
+                }
+                setIsMarked(!isMarked);
+            }
         }
     }
 

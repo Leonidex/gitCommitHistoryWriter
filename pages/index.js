@@ -33,12 +33,18 @@ export default function Home() {
     // Left mouse button press handling
     const [leftMouseIsPressed, setLeftMouseIsPressed] = useState(false);
 
-    const handleMouseDown = () => {
-        setLeftMouseIsPressed(true);
+    const handleMouseDown = (e) => {
+        let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
+        if (keyCode === 1) {
+            setLeftMouseIsPressed(true);
+        }
     };
 
-    const handleMouseUp = () => {
-        setLeftMouseIsPressed(false);
+    const handleMouseUp = (e) => {
+        let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
+        if (keyCode === 1) {
+            setLeftMouseIsPressed(false);
+        }
     };
 
     return (
