@@ -8,7 +8,7 @@ export default function Board({startDate, endDate, addDate, removeDate, leftMous
 
     useEffect(() => {
         const oneDay = 1000 * 60 * 60 * 24;
-        let daysCount = Math.round(Math.abs(startDate - endDate)/oneDay);
+        let daysCount = Math.ceil(Math.abs(startDate - endDate)/oneDay);
         setWeeksCount(Math.ceil(daysCount/7));
         console.log(`days count: ${daysCount}`)
     }, [startDate, endDate]);
