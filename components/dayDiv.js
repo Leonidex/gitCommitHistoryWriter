@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import React, { useEffect, useState, useRef } from 'react';
 
-export default function DayDiv({date, addDate, removeDate, leftMouseIsPressed}) {
+export default function DayDiv({date, addDate, removeDate, leftMouseIsPressed, edgeLength}) {
 
     // Fixing tooltip cut on the left side
     const ref = useRef();
@@ -13,11 +13,10 @@ export default function DayDiv({date, addDate, removeDate, leftMouseIsPressed}) 
         if (dims.x < 0 && dims.right < dims.width) {
             setLeft("100%");
             setRight("0");
-            let val = Math.round((dims.right - dims.width));
-            // console.log(`right: ${dims.right}, val: ${val}`);
         }
-    }, []);
+    });
 
+    // Handling mark
     const [isMarked, setIsMarked] = useState(false);
 
     const className = styles.daydiv + " " + styles.tooltip + " ";
@@ -43,7 +42,9 @@ export default function DayDiv({date, addDate, removeDate, leftMouseIsPressed}) 
     }
 
     return (
-        <div className={className + (isMarked? styles.daydiv_marked : styles.daydiv_unmarked)}
+        <div
+            className={className + (isMarked? styles.daydiv_marked : styles.daydiv_unmarked)}
+            style={{width: edgeLength, height: edgeLength}}
             onMouseEnter={handleMouseEnter}
             onMouseDown={handleMouseDown}>
                 <span

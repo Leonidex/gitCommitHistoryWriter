@@ -1,11 +1,11 @@
 import styles from '../styles/Home.module.css'
 import DayDiv from './dayDiv';
 
-export default function Column({startDate, addDate, removeDate, leftMouseIsPressed}) {
+export default function Column({startDate, addDate, removeDate, leftMouseIsPressed, dayDivEdgeLength: dayDivEdgeLength}) {
     let days = [];
 
     let tempDate = new Date(startDate);
-    
+
     days.push(new Date(tempDate));
     
     for (let index = 0; index < 6; index++) {
@@ -16,7 +16,7 @@ export default function Column({startDate, addDate, removeDate, leftMouseIsPress
     return (
         <div className={styles.row}>
             {days.map(date => {
-                return <DayDiv date={date} key={'day' + date} addDate={addDate} removeDate={removeDate} leftMouseIsPressed={leftMouseIsPressed}></DayDiv>
+                return <DayDiv date={date} key={'day' + date} addDate={addDate} removeDate={removeDate} leftMouseIsPressed={leftMouseIsPressed} edgeLength={dayDivEdgeLength}></DayDiv>
             })}
         </div>
     )

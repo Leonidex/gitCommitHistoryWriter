@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useWindowSize from '../hooks/useWindowSize';
 import styles from '../styles/Home.module.css'
 import Column from './column'
 
@@ -21,11 +22,19 @@ export default function Board({startDate, endDate, addDate, removeDate, leftMous
         tempDate.setDate(tempDate.getDate() + 7);
         weeksStartDates.push(new Date(tempDate));
     }
+
+    // Responsive DayDiv size
+    const windowSize = useWindowSize();
+    const [dayDivEdgeLength, setDayDivEdgeLength] = useState("min(4vh, 2vw)");
+
+    useEffect(() => {
+        setDayDivEdgeLength(Math.floor(windowSize.width/(weeksCount + 2)));
+    }, [windowSize]);
     
     return (
         <div className={styles.board}>
             {weeksStartDates.map(date => {
-                return <Column startDate={date} key={"week" + date} addDate={addDate} removeDate={removeDate} leftMouseIsPressed={leftMouseIsPressed}></Column>
+                return <Column startDate={date} key={"week" + date} addDate={addDate} removeDate={removeDate} leftMouseIsPressed={leftMouseIsPressed} dayDivEdgeLength={dayDivEdgeLength}></Column>
             })}
         </div>
     )
