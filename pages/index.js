@@ -12,6 +12,16 @@ export default function Home() {
     const [ startDate, setStartDate] = useState(new Date(new Date().setFullYear(new Date().getFullYear() - 1)));
     const [ endDate, setEndDate] = useState(new Date());
 
+    const referenceDate = new Date(2017, 0, 1);
+    const startDateHandler = (date) => {
+        console.log(referenceDate);
+        let diffDays = (date - referenceDate) % 7;
+        console.log(diffDays);
+        let _date = new Date(new Date().setDate(date.getDate() - diffDays));
+        console.log(_date);
+        setStartDate(_date);
+    }
+
     const [selectedDates, setSelectedDates] = useState([]);
 
     const addSelectedDate = (date) => {
@@ -51,7 +61,7 @@ export default function Home() {
             <main className={styles.main}>
                 <h1 className={styles.title}>Git commiter gui</h1>
 
-                <ReactDatePicker selected={startDate} onChange={(date) => setStartDate(date)} dateFormat="yyyy/MM/d"/>
+                <ReactDatePicker selected={startDate} onChange={(date) => startDateHandler(date)} dateFormat="yyyy/MM/d"/>
                 <ReactDatePicker selected={endDate} onChange={(date) => setEndDate(date)} dateFormat="yyyy/MM/d"/>
 
                 <Board
