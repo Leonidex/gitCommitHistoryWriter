@@ -11,7 +11,6 @@ export default function Board({startDate, endDate, addDate, removeDate, leftMous
         const oneDay = 1000 * 60 * 60 * 24;
         let daysCount = Math.ceil(Math.abs(startDate - endDate)/oneDay);
         setWeeksCount(Math.ceil(daysCount/7));
-        console.log(`days count: ${daysCount}`)
     }, [startDate, endDate]);
 
     let weeksStartDates = [startDate];
