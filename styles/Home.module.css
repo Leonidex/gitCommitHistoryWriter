@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow-x: hidden;
+    overflow-x: scroll;
     background-color: rgb(15, 15, 15);
 }
 
