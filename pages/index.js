@@ -42,6 +42,7 @@ export default function Home() {
 
     const handleMouseUp = (e) => {
         let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
+        
         if (keyCode === 1) {
             setLeftMouseIsPressed(false);
         }

@@ -3,11 +3,12 @@ import { useState } from 'react';
 
 export default function ResultArea({selectedDates}) {
 
-    const [chosenDatesString, setChosenDatesString] = useState("Choose dates and press done");
+    const [chosenDatesString, setChosenDatesString] = useState("Choose start and end date, then pick the dates to commit on and press done.");
 
     const handleDoneClick = () => {
       console.log(selectedDates);
-      let finalString = "#!/bin/bash\n";
+      let finalString = "# Use this bash code on your terminal while it is on a directory of the git project you would like to commit on.\n";
+      finalString += "#!/bin/bash\n";
       finalString += "dates=(";
   
       if(selectedDates.length > 0) {
