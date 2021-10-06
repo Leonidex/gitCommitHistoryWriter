@@ -27,7 +27,12 @@ export default function Board({startDate, endDate, addDate, removeDate, leftMous
     const [dayDivEdgeLength, setDayDivEdgeLength] = useState("min(4vh, 2vw)");
 
     useEffect(() => {
-        setDayDivEdgeLength(Math.floor(windowSize.width/(weeksCount + 2)));
+        let val = Math.floor(windowSize.width/(weeksCount + 2));
+        if (val*7 > windowSize.height/3) {
+            setDayDivEdgeLength(windowSize.height/(7*3));
+        } else {
+            setDayDivEdgeLength(val);
+        }
     }, [windowSize, weeksCount]);
     
     return (
