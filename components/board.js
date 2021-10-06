@@ -10,7 +10,12 @@ export default function Board({startDate, endDate, addDate, removeDate, leftMous
     useEffect(() => {
         const oneDay = 1000 * 60 * 60 * 24;
         let daysCount = Math.ceil(Math.abs(startDate - endDate) / oneDay);
-        setWeeksCount(Math.ceil(daysCount / 7));
+        let _weeksCount = Math.ceil(daysCount / 7);
+        if (_weeksCount < 1000) {    // Arbitrary large number of weeks
+            setWeeksCount(Math.ceil(daysCount / 7));
+        } else {
+            alert("Please enter a valid date");
+        }
     }, [startDate, endDate]);
 
     let weeksStartDates = [startDate];
