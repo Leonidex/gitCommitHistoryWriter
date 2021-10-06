@@ -9,15 +9,20 @@ import ReactDatePicker from "react-datepicker";
 export default function Home() {
     // Dates variables
     // Set startDate to a year ago and endDate to today
-    let lastYear = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
-    const [ startDate, setStartDate] = useState(new Date(lastYear.setDate(lastYear.getDate() - lastYear.getDay())));
-    const [ endDate, setEndDate] = useState(new Date());
+    let lastYear = new Date(
+        new Date().setFullYear(new Date().getFullYear() - 1)
+    );
+    const [startDate, setStartDate] = useState(
+        new Date(lastYear.setDate(lastYear.getDate() - lastYear.getDay()))
+    );
+    const [endDate, setEndDate] = useState(new Date());
 
     const handleSetStartDate = (date) => {
         let _date = new Date(date.setDate(date.getDate() - date.getDay()));
         setStartDate(_date);
-    }
+    };
 
+    // Adding and removing dates from the selected dates list
     const [selectedDates, setSelectedDates] = useState([]);
 
     const addSelectedDate = (date) => {
@@ -34,15 +39,23 @@ export default function Home() {
     const [leftMouseIsPressed, setLeftMouseIsPressed] = useState(false);
 
     const handleMouseDown = (e) => {
-        let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
+        let keyCode =
+            e.keyCode ||
+            e.which ||
+            e.nativeEvent.keyCode ||
+            e.nativeEvent.which;
         if (keyCode === 1) {
             setLeftMouseIsPressed(true);
         }
     };
 
     const handleMouseUp = (e) => {
-        let keyCode = (e.keyCode || e.which || e.nativeEvent.keyCode || e.nativeEvent.which);
-        
+        let keyCode =
+            e.keyCode ||
+            e.which ||
+            e.nativeEvent.keyCode ||
+            e.nativeEvent.which;
+
         if (keyCode === 1) {
             setLeftMouseIsPressed(false);
         }
@@ -58,14 +71,21 @@ export default function Home() {
                 <title>Git commiter gui</title>
                 <meta name="Git commiter gui" content="Git commiter gui" />
                 <link rel="icon" href="/favicon.ico" />
-
             </Head>
 
             <main className={styles.main}>
                 <h1 className={styles.title}>Git commiter gui</h1>
 
-                <ReactDatePicker selected={startDate} onChange={(date) => handleSetStartDate(date)} dateFormat="yyyy/MM/d"/>
-                <ReactDatePicker selected={endDate} onChange={(date) => setEndDate(date)} dateFormat="yyyy/MM/d"/>
+                <ReactDatePicker
+                    selected={startDate}
+                    onChange={(date) => handleSetStartDate(date)}
+                    dateFormat="yyyy/MM/d"
+                />
+                <ReactDatePicker
+                    selected={endDate}
+                    onChange={(date) => setEndDate(date)}
+                    dateFormat="yyyy/MM/d"
+                />
 
                 <Board
                     startDate={startDate}

@@ -127,7 +127,9 @@
     visibility: visible;
 }
 
-.result_textarea, .button, .tooltiptext {
+.result_textarea,
+.button,
+.tooltiptext {
     font-family: monospace;
     padding: 12px 20px;
     font-size: 1rem;
@@ -137,10 +139,12 @@
     background-color: rgb(30, 30, 30);
 }
 
-.button:hover, .result_textarea:hover {
+.button:hover,
+.result_textarea:hover {
     background-color: rgb(60, 60, 60);
 }
 
-.button:active, .result_textarea:active {
+.button:active,
+.result_textarea:active {
     background-color: rgb(100, 100, 100);
 }
