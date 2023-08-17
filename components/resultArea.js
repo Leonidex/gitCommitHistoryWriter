@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function ResultArea({ selectedDates, min, max }) {
     const [chosenDatesString, setChosenDatesString] = useState(
-        "Choose start and end date, then pick the dates to commit on and press done."
+        "Choose start and end date, min and max commits per day, then pick the dates to commit on and press done."
     );
 
     const handleDoneClick = () => {
