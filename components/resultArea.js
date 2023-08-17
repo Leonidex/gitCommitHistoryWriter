@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
 
-export default function ResultArea({ selectedDates }) {
+export default function ResultArea({ selectedDates, min, max }) {
     const [chosenDatesString, setChosenDatesString] = useState(
         "Choose start and end date, then pick the dates to commit on and press done."
     );
@@ -23,21 +23,19 @@ export default function ResultArea({ selectedDates }) {
             }
         }
 
-        finalString += '#!/bin/bash\n'
+        finalString += 'min=' + min;
+        finalString += 'max=' + max;
 
         finalString += '# Define color codes\n'
         finalString += 'GREEN="\\033[1;32m"\n'
         finalString += 'RED="\\033[1;31m"\n'
         finalString += 'RESET="\\033[0m"\n'
 
-        finalString += 'min=5  # minimum number of commits\n'
-        finalString += 'max=10 # maximum number of commits\n'
-
         finalString += 'for date in "${dates[@]}"; do\n'
         finalString += '    echo "Committing for date: $date"\n'
 
         finalString += '    # Generate a random number between min and max\n'
-        finalString += '    number_of_commits=$(( RANDOM % (max - min + 1) + min ))\n'
+        finalString += '    number_of_commits=$(( RANDOM % (${max} - ${min} + 1) + ${min} ))\n'
         finalString += '    \n'
         finalString += '    for ((i=1; i<=$number_of_commits; i++)); do\n'
         finalString += '        echo "0" >> touched\n'

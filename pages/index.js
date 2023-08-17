@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import ResultArea from "../components/resultArea";
 
 import ReactDatePicker from "react-datepicker";
+import InputContainer from "../components/inputContainer";
 
 export default function Home() {
     // Dates variables
@@ -34,6 +35,27 @@ export default function Home() {
             selectedDates.filter((d) => d.toString() !== date.toString())
         );
     };
+
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(10);
+
+    const minOnChangeHandler = (e) => {
+        const newMin = parseInt(e.target.value);
+
+        if (newMin > max) {
+            setMax(newMin);
+        }
+        setMin(newMin);
+    }
+
+    const maxOnChangeHandler = (e) => {
+        const newMax = parseInt(e.target.value);
+
+        if (newMax < min) {
+            setMin(newMax);
+        }
+        setMax(newMax);
+    }
 
     // Left mouse button press handling
     const [leftMouseIsPressed, setLeftMouseIsPressed] = useState(false);
@@ -76,17 +98,50 @@ export default function Home() {
             <main className={styles.main}>
                 <h1 className={styles.title}>Git commiter gui</h1>
 
-                <ReactDatePicker
-                    selected={startDate}
-                    onChange={(date) => handleSetStartDate(date)}
-                    dateFormat="yyyy/MM/d"
-                />
+                <InputContainer
+                    label={'Start date:'}
+                >
+                    <ReactDatePicker
+                        selected={startDate}
+                        onChange={(date) => handleSetStartDate(date)}
+                        dateFormat="yyyy/MM/d"
+                    />
+                </InputContainer>
+
+                <InputContainer
+                    label={'End date:'}
+                >
                 <ReactDatePicker
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
                     dateFormat="yyyy/MM/d"
                 />
+                </InputContainer>
 
+                <InputContainer
+                    label={'Min commits per day:'}
+                >
+                <input
+                    className={'number-input'}
+                    type={"number"}
+                    min={1}
+                    value={min}
+                    placeholder={"Minimal amount of commits per day"}
+                    onChange={minOnChangeHandler}
+                />
+                </InputContainer>
+                <InputContainer
+                    label={'Max commits per day:'}
+                >
+                <input
+                    className={'number-input'}
+                    type={"number"}
+                    min={1}
+                    value={max}
+                    placeholder={"Maximal amount of commits per day"}
+                    onChange={maxOnChangeHandler}
+                />
+                </InputContainer>
                 <Board
                     startDate={startDate}
                     endDate={endDate}
@@ -94,7 +149,11 @@ export default function Home() {
                     removeDate={removeSelectedDate}
                     leftMouseIsPressed={leftMouseIsPressed}
                 ></Board>
-                <ResultArea selectedDates={selectedDates}></ResultArea>
+                <ResultArea
+                    selectedDates={selectedDates}
+                    min={min}
+                    max={max}
+                ></ResultArea>
             </main>
 
             <footer className={styles.footer}>
